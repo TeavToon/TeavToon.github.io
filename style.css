@@ -134,15 +134,17 @@ body {
 }
 
 .skills-badge {
+    display: flex;
+    flex-wrap: wrap;         /* ให้ปัดบรรทัดได้ */
+    justify-content: center; /* จัดกึ่งกลาง */
+    gap: 10px;               /* เว้นระยะห่างทั้งแนวตั้งและแนวนอน 10px */
     margin-bottom: 40px;
 }
 
 .skills-badge span {
-    display: inline-block;
     background: #eee;
     padding: 5px 15px;
     border-radius: 20px;
-    margin: 0 5px;
     font-size: 0.9rem;
     color: #555;
     font-family: var(--font-code);
