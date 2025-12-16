@@ -15,6 +15,10 @@
     --text-color: #636e72;    /* สีตัวหนังสือเทาอ่านสบายตา */
     --font-main: 'Prompt', sans-serif;
     --font-code: 'Roboto Mono', monospace;
+    --card-bg: #ffffff;
+    --hero-bg: radial-gradient(circle at 10% 20%, rgb(249, 249, 249) 0%, rgb(255, 255, 255) 90%);
+    --badge-bg: #eee;
+    --badge-text: #555;
 }
 
 body {
@@ -23,6 +27,20 @@ body {
     color: var(--primary-color);
     line-height: 1.6;
     overflow-x: hidden;
+}
+
+/* --- DARK MODE VARIABLES --- */
+body.dark-theme {
+    --primary-color: #f5f6fa; /* สีตัวหนังสือหลัก (ขาว) */
+    --accent-color: #74b9ff;  /* ฟ้าสว่าง */
+    --bg-color: #1e272e;      /* พื้นหลังมืด */
+    --bg-alt: #2d3436;        /* พื้นหลังส่วนตัด (เข้มกว่าปกติ) */
+    --text-color: #b2bec3;    /* สีตัวหนังสือรอง (เทา) */
+    --card-bg: #2d3436;       /* สีพื้นหลังการ์ด */
+    --hero-bg: radial-gradient(circle at 10% 20%, #2d3436 0%, #1e272e 90%); /* Gradient มืด */
+    --badge-bg: #2d3436;      /* สีพื้นหลัง Badge ใน Dark Mode */
+    --badge-text: #dfe6e9;    /* สีตัวหนังสือ Badge */
+    --shadow: rgba(0,0,0,0.5);
 }
 
 /* Container */
@@ -38,12 +56,19 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px 5%;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.95); /* Default Light */
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+/* Dark Mode Navbar Override */
+body.dark-theme .navbar {
+    background: rgba(30, 39, 46, 0.95);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
 .logo {
@@ -80,13 +105,35 @@ body {
 
 .btn-contact:hover {
     background-color: var(--primary-color);
-    color: #fff !important;
+    color: #fff !important; /* Force white text on hover */
+}
+
+/* Dark Mode Hover Text Fix */
+body.dark-theme .btn-contact:hover {
+    color: #1e272e !important; /* กลับเป็นสีเข้มเมื่อ Hover ใน Dark Mode เพื่อให้อ่านง่าย */
 }
 
 .hamburger {
     display: none;
     font-size: 1.5rem;
     cursor: pointer;
+    color: var(--primary-color);
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    padding: 5px 10px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#theme-toggle:hover {
+    color: var(--accent-color);
+    transform: rotate(15deg);
 }
 
 /* Hero Section */
@@ -97,12 +144,13 @@ body {
     align-items: center;
     text-align: center;
     padding-top: 80px;
-    background: radial-gradient(circle at 10% 20%, rgb(249, 249, 249) 0%, rgb(255, 255, 255) 90%);
+    /* ใช้ Variable แก้ปัญหาพื้นหลังขาวค้าง */
+    background: var(--hero-bg); 
 }
 
 .hero-content {
-    padding: 0 20px; /* เว้นขอบซ้ายขวา 20px ไม่ให้ชิดจอ */
-    max-width: 100%; /* มั่นใจว่าไม่ล้นจอ */
+    padding: 0 20px;
+    max-width: 100%;
 }
 
 .greeting {
@@ -135,29 +183,32 @@ body {
 
 .skills-badge {
     display: flex;
-    flex-wrap: wrap;         /* ให้ปัดบรรทัดได้ */
-    justify-content: center; /* จัดกึ่งกลาง */
-    gap: 10px;               /* เว้นระยะห่างทั้งแนวตั้งและแนวนอน 10px */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
     margin-bottom: 40px;
 }
 
 .skills-badge span {
-    background: #eee;
+    /* ใช้ Variable แก้ปัญหา Badge สว่างเกินไป */
+    background: var(--badge-bg);
+    color: var(--badge-text);
     padding: 5px 15px;
     border-radius: 20px;
     font-size: 0.9rem;
-    color: #555;
     font-family: var(--font-code);
+    transition: background 0.3s, color 0.3s;
 }
 
-.skills-badge i {
-    margin-right: 5px;
+/* เพิ่ม Border ให้ Badge ใน Dark Mode จะได้ดูมีมิติ */
+body.dark-theme .skills-badge span {
+    border: 1px solid #444;
 }
 
 .btn-primary {
     display: inline-block;
     padding: 12px 30px;
-    background-color: var(--accent-color);
+    background-color: #0069d9;
     color: #fff;
     border-radius: 5px;
     font-weight: 600;
@@ -165,7 +216,7 @@ body {
 }
 
 .btn-primary:hover {
-    background-color: #0069d9;
+    background-color: var(--accent-color);
 }
 
 /* Sections General */
@@ -197,6 +248,7 @@ body {
     text-align: center;
     max-width: 800px;
     margin: 0 auto;
+    transition: background 0.3s;
 }
 
 .about-text p {
@@ -212,11 +264,16 @@ body {
 }
 
 .project-card {
-    background: #fff;
+    background: var(--card-bg); /* ใช้ Variable */
     border: 1px solid #eee;
     border-radius: 10px;
     overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s, border-color 0.3s;
+}
+
+/* Dark Mode Card Border */
+body.dark-theme .project-card {
+    border-color: #444;
 }
 
 .project-card:hover {
@@ -289,7 +346,7 @@ body {
 
 .social-btn {
     padding: 12px 25px;
-    background: #fff;
+    background: var(--card-bg); /* แก้: ใช้ Variable แทน #fff */
     border: 1px solid #ddd;
     border-radius: 5px;
     color: var(--primary-color);
@@ -299,10 +356,15 @@ body {
     gap: 10px;
 }
 
+/* Dark Mode Social Button Fix */
+body.dark-theme .social-btn {
+    border-color: #444; /* ปรับขอบให้เข้มขึ้นใน Dark Mode */
+}
+
 .social-btn:hover {
     border-color: var(--primary-color);
     background: var(--primary-color);
-    color: #fff;
+    color: var(--bg-color); /* ตัวหนังสือเปลี่ยนตามพื้นหลัง */
 }
 
 /* Footer */
@@ -312,40 +374,48 @@ footer {
     background: var(--primary-color);
     color: #888;
     font-size: 0.9rem;
+    transition: background 0.3s;
+}
+
+/* ปรับสี Footer ใน Dark Mode ให้ไม่สว่างจ้า (ใช้สีเดียวกับ Navbar มืด) */
+body.dark-theme footer {
+    background: #10151a; 
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    /* 1. จัดการ Navbar และ Hamburger Menu */
     .navbar {
-        padding: 15px 20px; /* ลดความสูง Navbar ในมือถือ */
+        padding: 15px 20px;
     }
 
     .hamburger {
-        display: block; /* โชว์ปุ่มเมนู */
+        display: block;
         z-index: 1001;
     }
 
     .nav-links {
         position: absolute;
-        top: 100%; /* ให้เริ่มต่อจากด้านล่างของ Navbar */
+        top: 100%;
         left: 0;
         width: 100%;
-        background: #ffffff;
+        background: var(--bg-color); /* ใช้ Variable */
         flex-direction: column;
         align-items: center;
         padding: 40px 0;
         gap: 25px;
         box-shadow: 0 10px 10px rgba(0,0,0,0.05);
-        
-        /* ซ่อนเมนูไว้ก่อน และทำ Animation */
         opacity: 0;
         transform: translateY(-20px);
-        visibility: hidden; /* ใช้ visibility เพื่อกันไม่ให้กดโดนตอนซ่อน */
+        visibility: hidden;
         transition: all 0.3s ease;
     }
 
-    /* Class .active นี้ต้องใช้ JavaScript สั่งเพิ่มเข้ามาตอนกดปุ่ม */
+    /* Override Nav Links Background for Dark Mode Mobile */
+    body.dark-theme .nav-links {
+        background: rgba(30, 39, 46, 0.98);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+    }
+
     .nav-links.active {
         opacity: 1;
         transform: translateY(0);
@@ -353,31 +423,27 @@ footer {
     }
 
     .btn-contact {
-        width: 80%; /* ปุ่มเต็มความกว้างในเมนูมือถือ */
+        width: 80%;
         text-align: center;
     }
 
-    /* 2. ปรับ Hero Section */
     .hero {
-        /* เปลี่ยนจาก height: 100vh เป็น min-height */
-        /* เพื่อป้องกันเนื้อหาซ้อนทับกันถ้าจอมือถือเตี้ย */
         height: auto; 
         min-height: 100vh; 
-        padding-top: 100px; /* เผื่อที่ให้ Navbar */
+        padding-top: 100px;
         padding-bottom: 50px;
     }
 
     .hero h1 {
-        font-size: 2.5rem; /* ลดขนาดหัวข้อ */
+        font-size: 2.5rem;
     }
     
     .subtitle {
         font-size: 1.2rem;
     }
 
-    /* 3. ปรับระยะห่าง Section ทั่วไป */
     .section {
-        padding: 50px 20px; /* ลดจาก 80px เหลือ 50px */
+        padding: 50px 20px;
     }
 
     .section-title {
@@ -385,26 +451,27 @@ footer {
         margin-bottom: 30px;
     }
 
-    /* 4. ปรับ Social Links */
     .social-links {
-        flex-direction: column; /* เรียงปุ่มแนวตั้งในมือถือ */
+        flex-direction: column;
         padding: 0 20px;
     }
     
     .social-btn {
-        justify-content: center; /* จัดกลาง */
+        justify-content: center;
         width: 100%;
+    }
+
+    .theme-switch-item {
+        margin-top: 10px;
     }
 }
 
-/* เพิ่มสำหรับมือถือจอเล็กมาก (เช่น iPhone SE หรือ Fold ตอนพับ) */
 @media (max-width: 480px) {
     .hero h1 {
         font-size: 2rem;
     }
     
     .project-grid {
-        /* บังคับเหลือ 1 คอลัมน์แน่นอนถ้าจอเล็กมาก */
         grid-template-columns: 1fr; 
     }
 }

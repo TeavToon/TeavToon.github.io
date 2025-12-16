@@ -10,7 +10,9 @@
     <meta name="description" content="Portfolio of TeavToon - IT Student & Aspiring Developer">
     <meta property="og:title" content="TeavToon | IT Portfolio">
     <meta property="og:description" content="Check out my coding projects and skills!">
-    <meta property="og:image" content="cover-image.jpg"> <link rel="stylesheet" href="style.css">
+    <meta property="og:image" content="cover-image.jpg"> 
+    
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -23,6 +25,11 @@
             <li><a href="#about">About</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact" class="btn-contact">Contact Me</a></li>
+            <li class="theme-switch-item">
+                <button id="theme-toggle" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </li>
         </ul>
         <div class="hamburger">
             <i class="fas fa-bars"></i>
@@ -33,10 +40,10 @@
         <div class="hero-content">
             <span class="greeting">Hello, I'm</span>
             <h1>TeavToon</h1>
-            <p class="subtitle">IT Student @ RMUTT | Aspiring Hacker & Game Developer</p>
+            <p class="subtitle">Future Cybersecurity Specialist & Game Developer</p>
             <p class="description">
-                นักศึกษาชั้นปีที่ 1 คณะวิทยาศาสตร์ สาขาเทคโนโลยีสารสนเทศ <br>
-                กำลังศึกษาและพัฒนาทักษะด้าน Coding เพื่อสร้างสรรค์นวัตกรรมและความปลอดภัยบนโลกไซเบอร์
+                "ไม่ได้แค่เขียนโปรแกรมให้ทำงาน แต่เข้าใจกลไกเบื้องหลัง <br>
+                เพื่อสร้างสรรค์ความสนุก และอุดรอยรั่วของระบบ"
             </p>
             <div class="skills-badge">
                 <span><i class="fab fa-html5"></i> HTML</span>
@@ -53,11 +60,14 @@
         <div class="about-content">
             <div class="about-text">
                 <p>
-                    สวัสดีครับ ผมชื่อ <strong>TeavToon</strong> ปัจจุบันเป็นนักศึกษาปี 1 สาขา IT ที่มหาวิทยาลัยเทคโนโลยีราชมงคลธัญบุรี (RMUTT)
+                    สวัสดีครับ ผมชื่อ <strong>TeavToon</strong> <br>
+                    นักศึกษาชั้นปีที่ 1 คณะวิทยาศาสตร์และเทคโนโลยี <strong>สาขาเทคโนโลยีสารสนเทศและการสื่อสารดิจิทัล (RMUTT)</strong>
                 </p>
                 <p>
-                    ผมมีความหลงใหลในโลกของคอมพิวเตอร์ โดยเฉพาะด้าน <strong>Cybersecurity (Hacking)</strong> และ <strong>Game Development</strong> 
-                    ปัจจุบันผมกำลังฝึกฝนทักษะพื้นฐานอย่างเข้มข้นทั้ง Java และ Python เพื่อต่อยอดไปสู่การสร้างโปรเจกต์ที่ซับซ้อนขึ้นในอนาคต
+                    จุดเริ่มต้นของผมมาจากการตั้งคำถามว่า <em>"โปรแกรมทำงานอย่างไร?"</em> และ <em>"เราจะเจาะระบบมันได้ไหม?"</em> 
+                    สิ่งนี้จุดประกายความหลงใหลในด้าน <strong>Cybersecurity</strong> และ <strong>Game Development</strong> อย่างจริงจัง 
+                    ปัจจุบันผมไม่ได้แค่เรียนเขียนโค้ดเพื่อให้โปรแกรมทำงานได้ แต่ผมฝึกฝน Logic และ Algorithm เพื่อเข้าใจโครงสร้างของระบบ 
+                    เพื่อเตรียมพร้อมสู่การเป็นนักพัฒนาและผู้เชี่ยวชาญด้านความปลอดภัยในอนาคต
                 </p>
             </div>
         </div>
@@ -74,8 +84,8 @@
                 <div class="card-body">
                     <h3>Salary Allocation Helper</h3>
                     <p class="tech-stack">HTML, CSS, JavaScript</p>
-                    <p>เว็บแอปพลิเคชันวางแผนการเงินส่วนบุคคล ช่วยคำนวณและจัดสรรเงินเดือนตามสูตร 50/30/20 หรือสูตรที่กำหนดเอง แสดงผลลัพธ์เป็นกราฟิกเพื่อให้เข้าใจภาพรวมการเงินได้ง่ายขึ้น</p>
-                    <a href="https://teavtoon.github.io/teavtoon-salary.github.io/" class="btn-text">View Project <i class="fas fa-arrow-right"></i></a>
+                    <p>Web Application สำหรับวางแผนการเงินส่วนบุคคล คำนวณการจัดสรรเงินเดือนอัตโนมัติ ช่วยฝึก Logic การจัดการตัวเลขและการแสดงผลข้อมูลแบบ Dynamic</p>
+                    <a href="https://teavtoon.github.io/teavtoon-salary.github.io/" class="btn-text" target="_blank">View Project <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -86,8 +96,8 @@
                 <div class="card-body">
                     <h3>Dynamic Kanban Board</h3>
                     <p class="tech-stack">HTML, CSS, JavaScript</p>
-                    <p>ระบบจัดการงานแบบ Agile (To Do, Doing, Done) ที่ใช้งานได้แบบ Real-time รองรับการสร้าง ลาก และย้ายสถานะงาน เน้น Logic การจัดการข้อมูลที่ซับซ้อนหลังบ้าน</p>
-                    <a href="https://github.com/TeavToon/Dynamic-Kanban-Board" class="btn-text">View Project <i class="fas fa-arrow-right"></i></a>
+                    <p>ระบบจัดการงานแบบ Agile (To Do, Doing, Done) ใช้งานได้จริงแบบ Real-time โปรเจกต์นี้เน้นการจัดการ DOM Manipulation และการเก็บข้อมูลที่ซับซ้อน</p>
+                    <a href="https://github.com/TeavToon/Dynamic-Kanban-Board" class="btn-text" target="_blank">View Project <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
 
@@ -96,7 +106,7 @@
 
     <section id="contact" class="container section contact-section">
         <h2 class="section-title">Get In Touch</h2>
-        <p>สนใจร่วมงาน พูดคุยเรื่องเทคโนโลยี หรืออยากแลกเปลี่ยนความรู้ ติดต่อผมได้ที่</p>
+        <p>กำลังมองหาเพื่อนร่วมทีม Dev หรือพูดคุยเรื่อง Tech? ติดต่อผมได้เลยครับ</p>
         
         <div class="social-links">
             <a href="mailto:toonza.niceza@gmail.com" class="social-btn">
@@ -112,7 +122,7 @@
     </section>
 
     <footer>
-        <p>&copy; <span id="year"></span> TeavToon. Created with HTML, CSS & JS.</p>
+        <p>&copy; <span id="year"></span> TeavToon. Handcrafted with <i class="fas fa-heart" style="color: red;"></i> and Code.</p>
     </footer>
 
     <script src="script.js"></script>

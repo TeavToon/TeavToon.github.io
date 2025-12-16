@@ -65,4 +65,43 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("%c Hello from TeavToon! ", "background: #222; color: #bada55; font-size: 20px; padding: 10px; border-radius: 5px;");
     console.log("Welcome to my portfolio. Feel free to check my code on GitHub!");
 
+    // 7. Dark/Light Mode Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = themeToggle.querySelector('i');
+    const body = document.body;
+
+    // ฟังก์ชันอัปเดตไอคอน
+    const updateIcon = (isDark) => {
+        if (isDark) {
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun'); // เปลี่ยนเป็นรูปพระอาทิตย์
+        } else {
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon'); // เปลี่ยนเป็นรูปพระจันทร์
+        }
+    };
+
+    // เช็คค่าเดิมที่เคยบันทึกไว้ใน LocalStorage
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        body.classList.add('dark-theme');
+        updateIcon(true);
+    }
+
+    // Event เมื่อกดปุ่ม
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-theme');
+            
+            // เช็คว่าตอนนี้เป็น Dark ไหม
+            const isDark = body.classList.contains('dark-theme');
+            
+            // อัปเดตไอคอน
+            updateIcon(isDark);
+            
+            // บันทึกค่าลงเครื่อง
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+    }
+
 });
