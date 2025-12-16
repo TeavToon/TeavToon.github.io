@@ -205,7 +205,7 @@ body {
 /* Projects Section */
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
     gap: 30px;
 }
 
@@ -314,20 +314,95 @@ footer {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .hero h1 { font-size: 3rem; }
-    .nav-links {
-        display: none; /* ซ่อนเมนูในมือถือ - (ต้องเขียน JS เพิ่มถ้าจะทำเมนู Hamburger จริงจัง) */
+    /* 1. จัดการ Navbar และ Hamburger Menu */
+    .navbar {
+        padding: 15px 20px; /* ลดความสูง Navbar ในมือถือ */
     }
-    .hamburger { display: block; }
-    .nav-links.active {
-        display: flex;
-        flex-direction: column;
+
+    .hamburger {
+        display: block; /* โชว์ปุ่มเมนู */
+        z-index: 1001;
+    }
+
+    .nav-links {
         position: absolute;
-        top: 70px;
-        right: 0;
-        background: #fff;
+        top: 100%; /* ให้เริ่มต่อจากด้านล่างของ Navbar */
+        left: 0;
         width: 100%;
-        padding: 20px;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        background: #ffffff;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 0;
+        gap: 25px;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+        
+        /* ซ่อนเมนูไว้ก่อน และทำ Animation */
+        opacity: 0;
+        transform: translateY(-20px);
+        visibility: hidden; /* ใช้ visibility เพื่อกันไม่ให้กดโดนตอนซ่อน */
+        transition: all 0.3s ease;
+    }
+
+    /* Class .active นี้ต้องใช้ JavaScript สั่งเพิ่มเข้ามาตอนกดปุ่ม */
+    .nav-links.active {
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+    }
+
+    .btn-contact {
+        width: 80%; /* ปุ่มเต็มความกว้างในเมนูมือถือ */
+        text-align: center;
+    }
+
+    /* 2. ปรับ Hero Section */
+    .hero {
+        /* เปลี่ยนจาก height: 100vh เป็น min-height */
+        /* เพื่อป้องกันเนื้อหาซ้อนทับกันถ้าจอมือถือเตี้ย */
+        height: auto; 
+        min-height: 100vh; 
+        padding-top: 100px; /* เผื่อที่ให้ Navbar */
+        padding-bottom: 50px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem; /* ลดขนาดหัวข้อ */
+    }
+    
+    .subtitle {
+        font-size: 1.2rem;
+    }
+
+    /* 3. ปรับระยะห่าง Section ทั่วไป */
+    .section {
+        padding: 50px 20px; /* ลดจาก 80px เหลือ 50px */
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+        margin-bottom: 30px;
+    }
+
+    /* 4. ปรับ Social Links */
+    .social-links {
+        flex-direction: column; /* เรียงปุ่มแนวตั้งในมือถือ */
+        padding: 0 20px;
+    }
+    
+    .social-btn {
+        justify-content: center; /* จัดกลาง */
+        width: 100%;
+    }
+}
+
+/* เพิ่มสำหรับมือถือจอเล็กมาก (เช่น iPhone SE หรือ Fold ตอนพับ) */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .project-grid {
+        /* บังคับเหลือ 1 คอลัมน์แน่นอนถ้าจอเล็กมาก */
+        grid-template-columns: 1fr; 
     }
 }
